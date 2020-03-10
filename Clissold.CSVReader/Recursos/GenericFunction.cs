@@ -14,6 +14,7 @@ namespace Clissold.CSVReader.Recursos
     {
         public static bool LeerArchivo()
         {
+            Console.WriteLine("Leyendo Archivo ");
             const string path = @"C:\Users\crs80162\Documents\Git\Clissold.CSVReader\Clissold.CSVReader\Archivo\StockUpdater.xlsx";
             List<BunchBO> BunchList = new List<BunchBO>();
             const Decimal StdPieceMeter = 60;
@@ -48,7 +49,8 @@ namespace Clissold.CSVReader.Recursos
             Console.WriteLine("\n");
             Console.WriteLine("Items Agregados:" + BunchList.Count);
 
-            if (GenericFunction.NextStep()) { Bunch.Guardar(BunchList); }
+            if (NextStep()) { Bunch.Guardar(BunchList); }
+
             return true;
         }
 

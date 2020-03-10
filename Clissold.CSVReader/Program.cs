@@ -18,12 +18,10 @@ namespace Clissold.CSVReader
             Console.SetWindowSize(110,30);            
             Console.Title = "Soy Nelson v1 app";
             Console.WriteLine("========== Hola Developer ===========");
-            Console.WriteLine("Leyendo Archivo ");            
 
             try
             {
                 GenericFunction.LeerArchivo();
-                
             }
             catch (Exception ex)
             {
@@ -31,7 +29,6 @@ namespace Clissold.CSVReader
                 Console.WriteLine(ex.Message);
                 Console.ReadKey();
             }
-
 
         }
 
