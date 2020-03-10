@@ -9,7 +9,7 @@ namespace Clissold.DAL
 {
    public class BaseDAL
     {
-        public iDB2Connection _Cn = new iDB2Connection("datasource=srvidor;User ID=username;Password=password;");
+        public iDB2Connection _Cn = new iDB2Connection("datasource=servidor;User ID=usuaer;Password=paswww;");
 
     }
 }

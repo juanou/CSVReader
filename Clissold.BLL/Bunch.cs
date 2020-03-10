@@ -11,7 +11,12 @@ namespace Clissold.BLL
     {
         public static void Guardar(List<BunchBO> bunchList)
         {
-             new BunchDAL().Guardar(bunchList);
+            new BunchDAL().Guardar(bunchList);
+        }
+
+        public static void Delete()
+        {
+            new BunchDAL().Delete();
         }
     }
 }

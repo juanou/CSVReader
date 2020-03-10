@@ -30,14 +30,14 @@ namespace Clissold.CSVReader.Recursos
                 {
                     Dte = sl.GetCellValueAsString(iRow, 1),
                     Name = sl.GetCellValueAsString(iRow, 2),
-                    REF = sl.GetCellValueAsString(iRow, 3),
                     SetNO = sl.GetCellValueAsString(iRow, 4),
+                    REF = sl.GetCellValueAsString(iRow, 3),
+                    Created = DateTime.Today.ToShortDateString(),
+                    Month = DateTime.Now.ToString("MMMM"),
+                    Nopces = sl.GetCellValueAsString(iRow, 8),
                     Quality = sl.GetCellValueAsString(iRow, 5),
                     Design = sl.GetCellValueAsString(iRow, 6),
-                    Shade = sl.GetCellValueAsString(iRow, 7),
-                    Nopces = sl.GetCellValueAsString(iRow, 8),
-                    Created = DateTime.Today.ToShortDateString(),
-                    Month = DateTime.Now.Month.ToString("MMMM"),
+                    Shade = sl.GetCellValueAsString(iRow, 7),                 
                     Meters = Decimal.Parse(mtrCal) * StdPieceMeter
                 };
 
@@ -46,11 +46,16 @@ namespace Clissold.CSVReader.Recursos
                 ProgressBar.DrawProgressBar(CurrentIndex, BunchList.Count);
             }
 
-            Console.WriteLine("\n");
+            Console.WriteLine("\n\r");
             Console.WriteLine("Items Agregados:" + BunchList.Count);
 
-            if (NextStep()) { Bunch.Guardar(BunchList); }
-
+            if (NextStep()) {
+                Bunch.Delete();// Borrar stock Modificar mas adelante...              
+                Bunch.Guardar(BunchList);
+                
+            }
+            Console.WriteLine("\n\r Cerrando consola");
+            Thread.Sleep(1500);
             return true;
         }
 
@@ -59,13 +64,13 @@ namespace Clissold.CSVReader.Recursos
             Console.WriteLine("Desea agregar la info a la bd Si/No");
             if (string.Equals(Console.ReadLine(), "SI", StringComparison.OrdinalIgnoreCase))
             {
-                Console.Write("Agregando a la bd");
+                Console.Write("Borrando Datos de la tabla \n\r");
+                Console.Clear();
                 return true;
+
             }
             else
-            {
-                Console.WriteLine("Cerrando Programa");
-                Thread.Sleep(1500);
+            {                
                 return false;
             }
         }
